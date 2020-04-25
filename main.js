@@ -207,7 +207,7 @@ const pets = [
     color: "Red",
     specialSkill: "Doesn’t get weirded out by the word “moist.”",
     type: "dino",
-    imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
+    imageUrl: ""
   }
 
 ]
@@ -244,3 +244,10 @@ const init = () => {
 }
 
 init()
+
+let el = document.getElementById("buttons");
+el.onclick = function (){
+  console.log("I'm a useless button, only here for decoration. How sad.")
+
+}
+
