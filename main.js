@@ -130,7 +130,7 @@ const pets = [
     color: "Blue",
     specialSkill: "Listens attentively to boring stories.",
     type: "dog",
-    imageUrl: "http://dailynewsdig.com/wp-content/uploads/2014/03/Creative-And-Funny-Dog-Stock-Photography-Pictures-2.jpg"
+    imageUrl: ""
   },
   {
     name: "Spooky",
@@ -151,7 +151,7 @@ const pets = [
     color: "Orange",
     specialSkill: "Is comfortable with jokes about his receding hairline.",
     type: "cat",
-    imageUrl: "http://funnyanimalphoto.com/wp-content/uploads/2013/08/cat_caught_mouse_thegatewaypundit.jpg"
+    imageUrl: ""
   },
   {
     name: "Buddy",
@@ -172,7 +172,7 @@ const pets = [
     color: "Red",
     specialSkill: "Knows the words to 4 rap songs.",
     type: "cat",
-    imageUrl: "http://funbk.s3.amazonaws.com/wp-content/uploads/2016/06/funny-cat-video-which-will-make-you-laugh-louder.jpg"
+    imageUrl: ""
   },
   {
     name: "Bubba",
@@ -200,7 +200,7 @@ const pets = [
     color: "Green",
     specialSkill: "Gives hugs with appropriate pressure and for the right length of time.",
     type: "cat",
-    imageUrl: "http://img.izismile.com/img/img2/20090219/cats_02.jpg"
+    imageUrl: ""
   },
   {
     name: "Lucy",
@@ -217,37 +217,61 @@ const printToDom = (selector, textToPrint) => {
   selectedDiv.innerHTML = textToPrint;
 }
 
-const buildPetCards = () => {
+const buildPetCards = (petCollection) => {
   let domString = '';
-  for (i = 0; i<pets.length; i++) {
+  for (i = 0; i<petCollection.length; i++) {
     domString += '<div class = "petAdoption">';
-    domString += `<h2>${pets[i].name}<h2>`;
-    domString += `<img src="${pets[i].imageUrl}" alt="animal">`;
-    domString += `<h3>${pets[i].color}</h3>`;
-    domString += `<p>${pets[i].name} has a special skill: ${pets[i].specialSkill}`;
-    if (pets[i].type === "cat") {
-    domString += `<h4 class="cat">${pets[i].type}</h4>`;
+    domString += `<h2>${petCollection[i].name}<h2>`;
+    domString += `<img src="${petCollection[i].imageUrl}" alt="animal">`;
+    domString += `<h3>${petCollection[i].color}</h3>`;
+    domString += `<p>${petCollection[i].name} has a special skill: ${petCollection[i].specialSkill}`;
+    if (petCollection[i].type === "cat") {
+    domString += `<h4 class="cat">${petCollection[i].type}</h4>`;
     }
-    if (pets[i].type === "dog") {
-    domString += `<h4 class="dog">${pets[i].type}</h4>`;
+    if (petCollection[i].type === "dog") {
+    domString += `<h4 class="dog">${petCollection[i].type}</h4>`;
     }
-    if (pets[i].type === "dino") {
-    domString += `<h4 class="dino">${pets[i].type}</h4>`;
+    if (petCollection[i].type === "dino") {
+    domString += `<h4 class="dino">${petCollection[i].type}</h4>`;
     }
     domString += '</div>'
   }
-  printToDom('#pets', domString)
+  printToDom("#pets", domString)
+}
+
+const filterPetsEvent = (event) => {
+  console.log(event.target.id)
+  const buttonId = event.target.id;
+  const tempPetCollection = [];
+
+  if (buttonId === "all") {
+    buildPetCards(pets);
+    return;
+  }
+
+  for (let i=0; i<pets.length; i++) {
+    if (pets[i].type === buttonId) {
+      tempPetCollection.push(pets[i])
+    }
+  }
+  buildPetCards(tempPetCollection)
+}
+
+const clickEvents = () => {
+  document.querySelector("#cat").addEventListener("click", filterPetsEvent);
+  document.querySelector("#dog").addEventListener("click", filterPetsEvent);
+  document.querySelector("#dino").addEventListener("click", filterPetsEvent);
+  document.querySelector("#all").addEventListener("click", filterPetsEvent);
 }
 
 const init = () => {
   buildPetCards(pets);
+  clickEvents()
 }
 
 init()
 
-let el = document.getElementById("buttons");
-el.onclick = function (){
-  console.log("I'm a useless button, only here for decoration. How sad.")
-
-}
-
+// let el = document.getElementById("buttons");
+// el.onclick = function (){
+//   console.log("I'm a useless button, only here for decoration. How sad.")
+// }
