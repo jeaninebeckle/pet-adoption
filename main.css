@@ -55,7 +55,7 @@ h2, h1, h3{
   text-align: center;
 }
 
-.dogs {
+#dog {
   background-color: rgb(89, 189, 89);
   border: none;
   padding: 15px 32px;
@@ -69,7 +69,7 @@ h2, h1, h3{
   margin: 10px
 }
 
-.cats {
+#cat {
   background-color: rgb(143, 230, 241);
   border: none;
   padding: 15px 32px;
@@ -83,7 +83,7 @@ h2, h1, h3{
   margin: 10px
 }
 
-.dinos {
+#dino {
   border: none;
   padding: 15px 32px;
   text-align: center;
@@ -97,19 +97,19 @@ h2, h1, h3{
   margin: 10px
 }
 
-.dinos:hover {
+#dino:hover {
   background-color: rgb(240, 214, 128);
 }
 
-.dogs:hover {
+#dog:hover {
   background-color: rgb(148, 219, 148);
 }
 
-.cats:hover {
+#cat:hover {
   background-color: rgb(191, 238, 250);
 }
 
-.showAll {
+#all {
   background-color: rgb(231, 230, 229);
   padding: 15px 32px;
   text-align: center;
@@ -121,15 +121,6 @@ h2, h1, h3{
   margin: 10px
 }
 
-.showAll:hover {
+#all:hover {
   background-color: rgb(247, 243, 243);
 }
-
-.filterDivDogs, .filterDivCats, .filterDivDinos {
-  display: none;
-}
-
-.show {
-  display: block;
-}
-
